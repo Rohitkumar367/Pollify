@@ -10,6 +10,9 @@ module.exports = {
         primary: "#82ff33",
         secondary: "#EF863E",
       },
+      fontFamily: {
+        myFont: ['MyFont', 'sans-serif'],
+      },
     },
   },
   plugins: [],
