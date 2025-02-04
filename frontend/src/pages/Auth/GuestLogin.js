@@ -1,10 +1,11 @@
 import React from 'react'
+import AuthLayout from '../../components/layout/AuthLayout'
 
 const GuestLogin = () => {
     return (
-        <div>
+        <AuthLayout>
             GuestLogin
-        </div>
+        </AuthLayout>
     )
 }
 

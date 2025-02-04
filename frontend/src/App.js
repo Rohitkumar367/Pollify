@@ -7,7 +7,7 @@ import CreatePoll from './pages/Dashboard/CreatePoll'
 import MyPolls from './pages/Dashboard/MyPolls'
 import VotedPolls from './pages/Dashboard/VotedPolls'
 import Bookmarks from './pages/Dashboard/Bookmarks'
-import AuthLayout from './components/layout/AuthLayout'
+import Nothing from './pages/Auth/Nothing'
 
 const App = () => {
   return (
@@ -15,7 +15,9 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Root/>} />
-          <Route path='/auth' element={<AuthLayout/>} />
+          <Route path='/begin' element={<Nothing/>}/>
+          <Route path='/login' element={<LoginForm/>} />
+          <Route path='/signup' element={<SignUpForm/>} />
           <Route path='/dashboard' element={<Home/>} />
           <Route path='/create-poll' element={<CreatePoll/>} />
           <Route path='/my-polls' element={<MyPolls/>} />
@@ -31,6 +33,6 @@ export default App
 
 const Root = () => {
   const isAuthenticated = !!localStorage.getItem("token");
-  return isAuthenticated ? (<Navigate to="/dashboard" />):(<Navigate to="/auth" />)
+  return isAuthenticated ? (<Navigate to="/dashboard" />):(<Navigate to="/begin" />)
 }
 
