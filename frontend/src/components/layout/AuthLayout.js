@@ -17,8 +17,8 @@ const AuthLayout = () => {
                     </div>
                 ):(
                     <div>
-                        {activeForm==="login" && <LoginForm onClose={()=>setActiveForm("none")} />}
-                        {activeForm==="signup" && <SignUpForm onClose={()=>setActiveForm("none")} />}
+                        {activeForm==="login" && <LoginForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
+                        {activeForm==="signup" && <SignUpForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
                         {activeForm==="guest" && <GuestLogin onClose={()=>setActiveForm("none")} />}
                     </div>
                 )}
@@ -31,9 +31,9 @@ const AuthLayout = () => {
                 </div>
 
                 <div className='mt-1 flex gap-2 text-[15px]'>
-                    <Button onClick={()=>setActiveForm("login")} className={`${activeForm==="login"?"font-semibold":""}`} >Login</Button>
-                    <Button onClick={()=>setActiveForm("signup")} className={`${activeForm==="signup"?"font-semibold":""}`}>signUp</Button>
-                    <Button onClick={()=>setActiveForm("guest")} className={`${activeForm==="guest"?"font-semibold":""}`}>Login as Guest</Button>
+                    <Button onClick={()=>setActiveForm("login")} className={`${activeForm==="login"?"font-bold":""}`} >Login</Button>
+                    <Button onClick={()=>setActiveForm("signup")} className={`${activeForm==="signup"?"font-bold":""}`}>signUp</Button>
+                    <Button onClick={()=>setActiveForm("guest")} className={`${activeForm==="guest"?"font-bold":""}`}>Login as Guest</Button>
                 </div>
 
             </div>
