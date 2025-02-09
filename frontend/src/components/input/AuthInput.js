@@ -10,12 +10,13 @@ const AuthInput = ({value, onChange, label, placeholder, type}) => {
 
     return (
         <div className='relative'>
+
             <label className='text-[13px] text-slate-800'>{label}</label>
 
             <div className='input-box'>
                 <input
                     type={
-                        type=="password"?(showPassword?"text":'password'):'text'
+                        type==="password"?(showPassword?"text":'password'):'text'
                     }
                     value={value}
                     onChange={(e)=>onChange(e)}
@@ -24,7 +25,7 @@ const AuthInput = ({value, onChange, label, placeholder, type}) => {
                 />
             </div>
 
-            {type=="password" && (<span className='absolute top-[35px] right-3 cursor-pointer text-gray-500'>
+            {type==="password" && (<span className='absolute top-[27px] md:top-[35px] right-1 md:right-3 cursor-pointer text-gray-500'>
                 {showPassword ? (
                     <FaRegEye
                         size={22}

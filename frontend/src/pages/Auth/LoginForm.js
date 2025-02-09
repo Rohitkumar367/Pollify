@@ -4,13 +4,15 @@ import AuthInput from '../../components/input/AuthInput';
 import { validateEmail } from '../../utils/helper';
 
 const LoginForm = ({setActiveForm}) => {
+
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[error, setError] = useState(null);
 
     const navigate = useNavigate();
 
-    const handleSubmit = async(e)=>{
+    // handle login form submit
+    const handleLogin = async(e)=>{
         e.preventDefault()
 
         if(!validateEmail(email)){
@@ -24,16 +26,21 @@ const LoginForm = ({setActiveForm}) => {
         }
 
         setError("");
+
+
     }
 
     return (
-        <div className='lg:w-[100%] h-3/4 md:h-full flex flex-col justify-center'>
+        <div className='flex flex-col justify-center'>
+
             <h3 className='text:xl md:text-4xl font-semibold text-black'>Welcome Back</h3>
+
             <p className='text-xs text-slate-700 mt-[5px] mb-6'>
                 Please Enter Your Details To LogIn
             </p>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
+
                 <AuthInput
                     value={email}
                     onChange={({target})=>setEmail(target.value)}
@@ -48,7 +55,9 @@ const LoginForm = ({setActiveForm}) => {
                     placeholder="Min 8 chracters"
                     type="password"
                 />
+            
                 {error && <p className='text-red-700 font-bold text-xs pb-2.5'>{error}</p>}
+
                 <div className='flex gap-5'>
                     <button type="submit" className='btn-primary'>
                         LOGIN
@@ -57,13 +66,16 @@ const LoginForm = ({setActiveForm}) => {
                         CLOSE
                     </button>
                 </div>
+
                 <p className='text-[13px] text-slate-800 mt-3'>
                     Don't have an account?{" "}
                     <Link className='font-medium text-green-600 hover:underline inline-block hover:scale-105' onClick={()=>setActiveForm("signup")}>
                         SignUp
                     </Link>
                 </p>
+
             </form>
+
         </div>
     )
 }

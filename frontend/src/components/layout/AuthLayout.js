@@ -8,18 +8,22 @@ const AuthLayout = () => {
     const[activeForm, setActiveForm] = useState("none");
 
     return (
-        <div className='flex flex-col sm:flex-row w-screen h-screen items-center justify-center bg-red-50'>
+        <div className='flex flex-col sm:flex-row w-screen min-h-screen overflow-auto items-center justify-center bg-red-50'>
 
-            <div className='bg-red-300 rounded-lg px-4 py-4 md:px-7 md:py-7 sm:px-4 sm:py-4'>
+            <div className='bg-red-300 rounded-lg px-4 py-4 md:px-7 md:py-7 sm:px-4 sm:py-4 mt-5'>
                 {activeForm==="none" ? (
                     <div className='text-5xl'>
                         <i className="fa-solid fa-comments"></i>
                     </div>
                 ):(
                     <div>
+
                         {activeForm==="login" && <LoginForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
+                        
                         {activeForm==="signup" && <SignUpForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
-                        {activeForm==="guest" && <GuestLogin onClose={()=>setActiveForm("none")} />}
+
+                        {activeForm==="guest" && <GuestLogin onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm}/>}
+                        
                     </div>
                 )}
             </div>
