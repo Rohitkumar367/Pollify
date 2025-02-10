@@ -11,6 +11,7 @@ const AuthLayout = () => {
         <div className='flex flex-col sm:flex-row w-screen min-h-screen overflow-auto items-center justify-center bg-red-50'>
 
             <div className='bg-red-300 rounded-lg px-4 py-4 md:px-7 md:py-7 sm:px-4 sm:py-4 mt-5'>
+
                 {activeForm==="none" ? (
                     <div className='text-5xl'>
                         <i className="fa-solid fa-comments"></i>
@@ -26,6 +27,7 @@ const AuthLayout = () => {
                         
                     </div>
                 )}
+                
             </div>
 
             <div className='px-8 py-5 flex flex-col justify-center items-center'>

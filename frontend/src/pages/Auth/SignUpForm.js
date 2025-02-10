@@ -19,11 +19,22 @@ const SignUpForm = ({setActiveForm}) => {
     const handleSignUp = (e)=>{
         e.preventDefault();
 
+        if(!fullName){
+            setError("Please enter the fullname")
+            return;
+        }    
+        if(!email){
+            setError("Please enter the email")
+            return;
+        }
+        if(!username){
+            setError("Please enter the username")
+            return;
+        }
         if(!validateEmail(email)){
             setError("Please enter a valid email address.")
             return
         }
-
         if(!password){
             setError("Please enter the password")
             return
@@ -42,6 +53,7 @@ const SignUpForm = ({setActiveForm}) => {
             </p>
             
             <form onSubmit={handleSignUp}>
+
                 <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -54,7 +66,7 @@ const SignUpForm = ({setActiveForm}) => {
                             placeholder="Roshan"
                             type="text"
                         />
-                        {fullName && <p className='text-secondaryLight text-[10px] -mt-2'>
+                        {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             We request you to provide us a suitable name.
                         </p>}
                     </div>
@@ -83,7 +95,7 @@ const SignUpForm = ({setActiveForm}) => {
                             placeholder="Min 8 chracters"
                             type="password"
                         />
-                        {password && <p className='text-secondaryLight text-[10px] -mt-2'>
+                        {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             we request you to remember your password
                         </p>}
                     </div>
@@ -106,6 +118,7 @@ const SignUpForm = ({setActiveForm}) => {
                         </Link>
                     </p>
                 </div>
+                
             </form>
         </div>
     )
