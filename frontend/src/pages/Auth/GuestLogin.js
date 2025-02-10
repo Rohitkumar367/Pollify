@@ -18,6 +18,11 @@ const GuestLogin = ({setActiveForm}) => {
     const handleGuest = (e)=>{
         e.preventDefault();
 
+        if(!email){
+            setError("Email input is empty!");
+            return
+        }
+
         if(!password){
             setError("Please enter the password")
             return
@@ -29,9 +34,9 @@ const GuestLogin = ({setActiveForm}) => {
     return (
         <div className='flex flex-col justify-center'>
 
-            <h3 className='text:xl md:text-4xl font-semibold text-black'>We Welcome You As Guest...</h3>    
+            <h3 className='text:xl md:text-4xl font-semibold text-black'>Create Guest Account...</h3>    
 
-            <p className='text-xs text-slate-700 mt-[5px] mb-1 md:mb-6'>
+            <p className='text-xs text-yellow-200 mt-[5px] mb-1 md:mb-6'>
                 You can use your GUEST ACCOUNT to login next time.
             </p>
             
@@ -48,7 +53,7 @@ const GuestLogin = ({setActiveForm}) => {
                             placeholder="Roshan"
                             type="text"
                         />
-                        {fullName && <p className='text-secondaryLight text-xs -mt-2'>
+                        {fullName && <p className='text-secondaryLight text-[10px] -mt-2'>
                             We request you to provide us a suitable name.
                         </p>}
                     </div>
@@ -77,7 +82,7 @@ const GuestLogin = ({setActiveForm}) => {
                             placeholder="Min 8 chracters"
                             type="password"
                         />
-                        {password && <p className='text-secondaryLight text-xs -mt-2'>
+                        {password && <p className='text-secondaryLight text-[10px] -mt-2'>
                             we request you to remember your password
                         </p>}
                     </div>

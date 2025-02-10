@@ -45,13 +45,19 @@ const SignUpForm = ({setActiveForm}) => {
                 <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                    <AuthInput
-                        value={fullName}
-                        onChange={({target})=>setFullName(target.value)}
-                        label="Full Name"
-                        placeholder="Roshan"
-                        type="text"
-                    />
+
+                    <div className='flex flex-col'>
+                        <AuthInput
+                            value={fullName}
+                            onChange={({target})=>setFullName(target.value)}
+                            label="Full Name"
+                            placeholder="Roshan"
+                            type="text"
+                        />
+                        {fullName && <p className='text-secondaryLight text-[10px] -mt-2'>
+                            We request you to provide us a suitable name.
+                        </p>}
+                    </div>
 
                     <AuthInput
                         value={email}
@@ -69,13 +75,18 @@ const SignUpForm = ({setActiveForm}) => {
                         type="text"
                     />
 
-                    <AuthInput
-                        value={password}
-                        onChange={({target})=>setPassword(target.value)}
-                        label="Password"
-                        placeholder="Min 8 chracters"
-                        type="password"
-                    />
+                    <div className='flex flex-col'>
+                        <AuthInput
+                            value={password}
+                            onChange={({target})=>setPassword(target.value)}
+                            label="Password"
+                            placeholder="Min 8 chracters"
+                            type="password"
+                        />
+                        {password && <p className='text-secondaryLight text-[10px] -mt-2'>
+                            we request you to remember your password
+                        </p>}
+                    </div>
 
                     {error && <p className='text-red-700 font-bold text-xs pb-2.5'>{error}</p>}
 
