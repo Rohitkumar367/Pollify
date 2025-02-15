@@ -13,12 +13,12 @@ const ProfilePhotoSelector = ({image, setImage}) => {
 
             const preview = URL.createObjectURL(file);
 
-            setPreviewUrl(preview)
+            setPreviewUrl(preview);
         }
     }
 
     const handleRemoveImage = () => {
-        setImage(null)
+        setImage(null);
     }
 
     const onChooseFile = () => {
@@ -37,7 +37,6 @@ const ProfilePhotoSelector = ({image, setImage}) => {
             />
 
             {!image ? 
-
                 <div className='w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-red-700 rounded-full relative'>
                     <LuUser className="text-2xl md:text-4xl text-green-600" />
 
@@ -45,9 +44,7 @@ const ProfilePhotoSelector = ({image, setImage}) => {
                         <LuUpload/>
                     </button>
                 </div>
-
                 :
-
                 <div className='relative'>
                     <img
                         src={previewUrl}
@@ -60,8 +57,6 @@ const ProfilePhotoSelector = ({image, setImage}) => {
                     </button>
                 </div>
             }
-
-
 
         </div>
     )
