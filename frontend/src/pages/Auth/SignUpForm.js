@@ -27,13 +27,13 @@ const SignUpForm = ({setActiveForm}) => {
             setError("Please enter the email")
             return;
         }
-        if(!username){
-            setError("Please enter the username")
-            return;
-        }
         if(!validateEmail(email)){
             setError("Please enter a valid email address.")
             return
+        }
+        if(!username){
+            setError("Please enter the username")
+            return;
         }
         if(!password){
             setError("Please enter the password")

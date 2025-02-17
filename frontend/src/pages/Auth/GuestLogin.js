@@ -68,7 +68,7 @@ const GuestLogin = ({setActiveForm}) => {
                     <AuthInput
                         value={email}
                         onChange={({target})=>setEmail(target.value)}
-                        label="Email Address (Random)"
+                        label="Email Address (Any Random/False)"
                         placeholder="mrddroid@gmail.com"
                         type="text"
                     />
