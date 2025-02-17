@@ -54,7 +54,7 @@ const SignUpForm = ({setActiveForm}) => {
             
             <form onSubmit={handleSignUp}>
 
-                <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
+                <ProfilePhotoSelector profilePic={profilePic} setProfilePic={setProfilePic}/>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 
