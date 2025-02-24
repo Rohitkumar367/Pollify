@@ -40,7 +40,7 @@ export const registerUser = async (req, res) => {
             return res.status(400).json({ message: "Username already exists" });
         }
 
-        // create the user
+        // create and save the user document
         const user = await UserModel.create({
             fullName,
             username,
