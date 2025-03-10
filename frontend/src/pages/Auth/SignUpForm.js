@@ -66,9 +66,9 @@ const SignUpForm = ({setActiveForm}) => {
                             placeholder="Roshan"
                             type="text"
                         />
-                        {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
+                        {/* {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             We request you to provide us a suitable name.
-                        </p>}
+                        </p>} */}
                     </div>
 
                     <AuthInput
@@ -95,9 +95,9 @@ const SignUpForm = ({setActiveForm}) => {
                             placeholder="Min 8 chracters"
                             type="password"
                         />
-                        {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
+                        {/* {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             we request you to remember your password
-                        </p>}
+                        </p>} */}
                     </div>
 
                     {error && <p className='text-red-700 font-bold text-xs pb-2.5'>{error}</p>}

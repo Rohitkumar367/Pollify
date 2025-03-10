@@ -61,7 +61,7 @@ const GuestLogin = ({setActiveForm}) => {
                             type="text"
                         />
                         {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
-                            We request you to provide us a suitable name.
+                            We request you to provide us a valid name.
                         </p>}
                     </div>
 
@@ -89,9 +89,9 @@ const GuestLogin = ({setActiveForm}) => {
                             placeholder="Min 8 chracters"
                             type="password"
                         />
-                        {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
+                        {/* {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             we request you to remember your password
-                        </p>}
+                        </p>} */}
                     </div>
 
                     {error && <p className='text-red-700 font-bold text-xs pb-2.5'>{error}</p>}
