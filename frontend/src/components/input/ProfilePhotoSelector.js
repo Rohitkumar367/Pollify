@@ -37,6 +37,7 @@ const ProfilePhotoSelector = ({profilePic, setProfilePic}) => {
                 className='hidden'
             />
 
+            
             {!profilePic ? 
                 <div className='w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-red-700 rounded-full relative'>
                     <LuUser className="text-2xl md:text-4xl text-green-600" />
