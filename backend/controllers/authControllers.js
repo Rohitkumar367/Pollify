@@ -61,6 +61,65 @@ export const registerUser = async (req, res) => {
 };
 
 
+// login User
+export const loginUser = async (req, res) => {
+
+    const { email, password } = req.body;
+    if(!email || !password){
+        return res.status(400).json({message: "All fields are required"})
+    }
+
+    try {
+        const user = await UserModel.findOne({email});
+
+        if(!user || !(await user.comparePassword(password))){
+            return res.status(400).json({message: "Invalid email or password"})
+        }
+
+        res.status(200).json({
+            _id: user._id,
+            user: {
+                ...user.toObject(),// because user is a mongoose document
+                totalPollsCreated: 0,
+                totalPollsVotes: 0,
+                totalPollsBookmarked: 0
+            },
+            token: generateToken(user._id)
+        })
+
+    } catch (err) {
+        res.status(500).json({message:"Error logging in user", error: err.message})
+    }
+}
+
+
+// Get User Info
+export const getUserInfo = async (req, res) => {
+    
+    try {
+        const user = await UserModel.findById(req.user.id).select("-password");
+
+        if(!user){
+            return res.status(404).json({message: "User not found"})
+        }
+
+        // add new attributes to the response
+        const userInfo = {
+            ...user.toObject(),
+            totalPollsCreated: 0,
+            totalPollsVotes: 0,
+            totalPollsBookmarked: 0
+        }
+
+        res.status(200).json(userInfo)
+
+    } catch (err) {
+        res.status(500).json({message:"Error getting user info", error: err.message})
+    }
+}
+
+
+
 export const checkAuth = async (req, res) => {
     try {
         const user = await UserModel.findById(req.userId).select("-password");

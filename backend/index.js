@@ -7,17 +7,18 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 dotenv.config()
 
-// we can only connect to our database after dotnev connection, because inside db.js we are ussing process.env
+// we can only connect to our database after dotnev configuration, because inside db.js we are using process.env
 import { connectDB } from './config/db.js'
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
-app.use(cookieParser())
+app.use(cookieParser())// cookieParser extract cookies and makes them available in req.cookies
 
-app.use(express.json());
+app.use(express.json());// express.json parses JSON payloads and makes them available in req.body
 
+// frontend->3000 and backend->5000 so, cors allows us to make requests from different frontend to backend because browser blocks API requests from different origins
 app.use(cors({
     origin: process.env.CLIENT_URL || "*",
     methods: ["GET", "POST", "PUT", "DELETE"],

@@ -1,6 +1,6 @@
 
 import jwt from 'jsonwebtoken'
-import User from '../models/UserModel.js'
+import UserModel from '../models/UserModel.js'
 
 export const protect = async(req, res, next)=>{
 
@@ -15,7 +15,7 @@ export const protect = async(req, res, next)=>{
         if(!decoded) 
             return res.status(401).json({message: "Unauthorized - invalid token"});
 
-        req.user = await User.findById(decoded.id).select('-password');
+        req.user = await UserModel.findById(decoded.id).select('-password');
 
         next();
         
