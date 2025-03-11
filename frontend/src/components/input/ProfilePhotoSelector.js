@@ -12,10 +12,9 @@ const ProfilePhotoSelector = ({profilePic, setProfilePic}) => {
             setProfilePic(file); //update the image state
 
             const preview = URL.createObjectURL(file);//Generate preview URL from the file
-
+            
             setPreviewUrl(preview);
         }
-
     }
     
     const handleRemoveImage = () => {

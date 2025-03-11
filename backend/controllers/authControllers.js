@@ -3,7 +3,11 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" })
+    return jwt.sign(
+        { id }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: "1h" }
+    )
 }
 
 // sign up new user
@@ -79,7 +83,7 @@ export const loginUser = async (req, res) => {
         res.status(200).json({
             _id: user._id,
             user: {
-                ...user.toObject(),// because user is a mongoose document
+                ...user.toObject(), // because user is a mongoose document
                 totalPollsCreated: 0,
                 totalPollsVotes: 0,
                 totalPollsBookmarked: 0
@@ -105,7 +109,7 @@ export const getUserInfo = async (req, res) => {
 
         // add new attributes to the response
         const userInfo = {
-            ...user.toObject(),
+            ...user.toObject(), // because user is a mongoose document
             totalPollsCreated: 0,
             totalPollsVotes: 0,
             totalPollsBookmarked: 0
