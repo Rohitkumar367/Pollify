@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import AuthInput from '../../components/input/AuthInput';
 import { validateEmail } from '../../utils/helper';
+import { useAuthStore } from '../../store/allStore';
 
 const LoginForm = ({setActiveForm}) => {
 
@@ -9,6 +10,7 @@ const LoginForm = ({setActiveForm}) => {
     const[password, setPassword] = useState("");
     const[error, setError] = useState(null);
 
+    const login = useAuthStore((state) => state.login);
     const navigate = useNavigate();
 
     // handle login form submit
@@ -27,7 +29,12 @@ const LoginForm = ({setActiveForm}) => {
 
         setError("");
 
-
+        try {
+            const {user} = await login(email, password);
+            navigate('/dashboard')
+        } catch (err) {
+            setError(err.response?.data?.message || "Login failed. Please try again later.");
+        }
     }
 
     return (
