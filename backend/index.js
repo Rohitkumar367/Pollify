@@ -30,6 +30,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
+
 // by default, express does not allow access to local files via HTTP. So, express.static() allow direct access to static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 

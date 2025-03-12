@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Button from './Button'
 import LoginForm from '../../pages/Auth/LoginForm';
-import SignUpForm from '../../pages/Auth/SignUpForm';
-import GuestLogin from '../../pages/Auth/GuestLogin';
+// import SignUpForm from '../../pages/Auth/SignUpForm';
+import GuestSignUpForm from '../../pages/Auth/GuestSignUpForm';
 
 const AuthLayout = () => {
     const[activeForm, setActiveForm] = useState("none");
@@ -19,11 +19,11 @@ const AuthLayout = () => {
                 ):(
                     <div>
 
-                        {activeForm==="login" && <LoginForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
+                        {activeForm==="login" && <LoginForm setActiveForm={setActiveForm} />}
                         
-                        {activeForm==="signup" && <SignUpForm onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm} />}
+                        {/* {activeForm==="signup" && <SignUpForm setActiveForm={setActiveForm} />} */}
 
-                        {activeForm==="guest" && <GuestLogin onClose={()=>setActiveForm("none")} setActiveForm={setActiveForm}/>}
+                        {activeForm==="guest" && <GuestSignUpForm setActiveForm={setActiveForm}/>}
                         
                     </div>
                 )}
@@ -37,9 +37,9 @@ const AuthLayout = () => {
                 </div>
 
                 <div className='mt-1 flex gap-2 text-[15px]'>
-                    <Button onClick={()=>setActiveForm("login")} className={`${activeForm==="login"?"font-bold":""}`} >Login</Button>
-                    <Button onClick={()=>setActiveForm("signup")} className={`${activeForm==="signup"?"font-bold":""}`}>signUp</Button>
-                    <Button onClick={()=>setActiveForm("guest")} className={`${activeForm==="guest"?"font-bold":""}`}>Login as Guest</Button>
+                    <Button Click={()=>setActiveForm("login")} className={`${activeForm==="login"?"font-bold":""}`} >Login</Button>
+                    {/* <Button Click={()=>setActiveForm("signup")} className={`${activeForm==="signup"?"font-bold":""}`}>signUp</Button> */}
+                    <Button Click={()=>setActiveForm("guest")} className={`${activeForm==="guest"?"font-bold":""}`}>Guest SIGNUP</Button>
                 </div>
 
             </div>

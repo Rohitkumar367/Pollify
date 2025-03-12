@@ -7,10 +7,9 @@ export const API_PATHS = {
         LOGIN: `/api/auth/login`,
         REGISTER: `/api/auth/register`,
         GET_USER_INFO: `/api/auth/getUser`,
-        UPLOAD_IMAGE: `/api/auth/upload-image`
     },
     IMAGE: {
-        UPLOAD_IMAGE: `/api/auth/upload-image`
+        UPLOAD_IMAGE: `/api/auth/upload-image`,
     }
 }
 

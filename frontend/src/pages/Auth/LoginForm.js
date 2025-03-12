@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import AuthInput from '../../components/input/AuthInput';
 import { validateEmail } from '../../utils/helper';
 import { useAuthStore } from '../../store/allStore';
+import { UserContext } from '../../context/UserContext';
 
 const LoginForm = ({setActiveForm}) => {
 
@@ -10,7 +11,9 @@ const LoginForm = ({setActiveForm}) => {
     const[password, setPassword] = useState("");
     const[error, setError] = useState(null);
 
-    const login = useAuthStore((state) => state.login);
+    const {updateUser} = useContext(UserContext);
+    const {login} = useAuthStore();
+    
     const navigate = useNavigate();
 
     // handle login form submit
@@ -29,11 +32,13 @@ const LoginForm = ({setActiveForm}) => {
 
         setError("");
 
+        // login api handle
         try {
-            const {user} = await login(email, password);
+            const userData = await login(email, password);
+            updateUser(userData);
             navigate('/dashboard')
         } catch (err) {
-            setError(err.response?.data?.message || "Login failed. Please try again later.");
+            setError(err.response?.data?.message || "Something went wrong. Please try again later.");
         }
     }
 
@@ -76,7 +81,7 @@ const LoginForm = ({setActiveForm}) => {
 
                 <p className='text-[13px] text-slate-800 mt-3'>
                     Don't have an account?{" "}
-                    <Link className='font-medium text-green-600 hover:underline inline-block hover:scale-105' onClick={()=>setActiveForm("signup")}>
+                    <Link className='font-medium text-green-600 hover:underline inline-block hover:scale-105' onClick={()=>setActiveForm("guest")}>
                         SignUp
                     </Link>
                 </p>

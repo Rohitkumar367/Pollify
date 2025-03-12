@@ -1,21 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import ProfilePhotoSelector from '../../components/input/ProfilePhotoSelector';
 import AuthInput from '../../components/input/AuthInput';
+import { useAuthStore } from '../../store/allStore';
+import { UserContext } from '../../context/UserContext';
 
-const GuestLogin = ({setActiveForm}) => {
+const GuestSignUpForm = ({setActiveForm}) => {
     const [profilePic, setProfilePic] = useState(null)
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
     const [error, setError] = useState(null);
+
+    const {signup, uploadImage} = useAuthStore();
+    const {updateUser} = useContext(UserContext);
 
     const navigate = useNavigate();
 
     // handle guest sign up form submit
-    const handleGuest = (e)=>{
+    const handleGuest = async (e)=>{
         e.preventDefault();
 
         if(!fullName){
@@ -36,6 +40,23 @@ const GuestLogin = ({setActiveForm}) => {
         }
 
         setError("");
+
+        // signup api handle
+        try {
+            // upload image if present
+            let profileImageUrl="";
+            if(profilePic){
+                const imageResponse = await uploadImage(profilePic);
+                profileImageUrl = imageResponse.imageUrl || "";
+            }
+
+            const userData = await signup(fullName, username, email, password, profileImageUrl);
+
+            updateUser(userData);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.response?.data?.message || "something went wrong. Please try again later")
+        }
     }
 
     return (
@@ -48,7 +69,7 @@ const GuestLogin = ({setActiveForm}) => {
             </p>
             
             <form onSubmit={handleGuest}>
-                <ProfilePhotoSelector image={profilePic} setImage={setProfilePic}/>
+                <ProfilePhotoSelector profilePic={profilePic} setProfilePic={setProfilePic}/>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 
@@ -61,7 +82,7 @@ const GuestLogin = ({setActiveForm}) => {
                             type="text"
                         />
                         {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
-                            We request you to provide us a valid name.
+                            We request you to provide us a meaningful name.
                         </p>}
                     </div>
 
@@ -89,9 +110,9 @@ const GuestLogin = ({setActiveForm}) => {
                             placeholder="Min 8 chracters"
                             type="password"
                         />
-                        {/* {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
+                        {password && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
                             we request you to remember your password
-                        </p>} */}
+                        </p>}
                     </div>
 
                     {error && <p className='text-red-700 font-bold text-xs pb-2.5'>{error}</p>}
@@ -106,9 +127,9 @@ const GuestLogin = ({setActiveForm}) => {
                     </div>
 
                     <p className='text-[13px] text-slate-800 md:mt-3'>
-                        Want to SignUp for Real?{" "}
-                        <Link className='font-medium text-green-600 hover:underline inline-block hover:scale-105' onClick={()=>setActiveForm("signup")}>
-                            SignUp
+                        Already have an account?{" "}
+                        <Link className='font-medium text-green-600 hover:underline inline-block hover:scale-105' onClick={()=>setActiveForm("login")}>
+                            LogIn
                         </Link>
                     </p>
                 </div>
@@ -117,4 +138,4 @@ const GuestLogin = ({setActiveForm}) => {
     )
 }
 
-export default GuestLogin
+export default GuestSignUpForm

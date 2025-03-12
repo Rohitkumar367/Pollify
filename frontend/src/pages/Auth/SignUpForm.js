@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import ProfilePhotoSelector from '../../components/input/ProfilePhotoSelector';
 import AuthInput from '../../components/input/AuthInput';
 import { validateEmail } from '../../utils/helper';
+import { UserContext } from '../../context/UserContext';
+import { useAuthStore } from '../../store/allStore';
+
 
 const SignUpForm = ({setActiveForm}) => {
     const [profilePic, setProfilePic] = useState(null)
@@ -10,13 +13,15 @@ const SignUpForm = ({setActiveForm}) => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
     const [error, setError] = useState(null);
+
+    const {updateUser} = useContext(UserContext);
+    const {signup, uploadImage} = useAuthStore();
 
     const navigate = useNavigate();
 
     // handle sign up form submit
-    const handleSignUp = (e)=>{
+    const handleSignUp = async (e) => { 
         e.preventDefault();
 
         if(!fullName){
@@ -41,6 +46,23 @@ const SignUpForm = ({setActiveForm}) => {
         }
 
         setError("");
+
+        // signup api handle
+        try {
+            // upload image if present
+            let profileImageUrl = "";
+            if(profilePic){
+                const imageResponse = await uploadImage(profilePic);
+                profileImageUrl = imageResponse.imageUrl || "";
+            }
+
+            const userData = await signup(fullName, username, email, password, profileImageUrl);
+
+            updateUser(userData);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.response?.data?.message || "something went wrong. Please try again later")
+        }
     }
 
     return (
