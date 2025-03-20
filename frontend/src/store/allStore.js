@@ -46,6 +46,8 @@ export const useAuthStore = create((set)=>({
                 },
             });
 
+            console.log({response});
+
             return response.data;
         } catch(err){
             console.error("Error uploading the image:", err);
