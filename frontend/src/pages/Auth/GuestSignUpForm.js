@@ -82,7 +82,7 @@ const GuestSignUpForm = ({setActiveForm}) => {
                             type="text"
                         />
                         {fullName && <p className='text-secondaryLight text-[10px] -mt-2 font-semibold'>
-                            We request you to provide us a meaningful name.
+                            We request you to provide us a suitable name.
                         </p>}
                     </div>
 

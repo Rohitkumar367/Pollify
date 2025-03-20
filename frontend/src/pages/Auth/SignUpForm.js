@@ -8,7 +8,7 @@ import { useAuthStore } from '../../store/allStore';
 
 
 const SignUpForm = ({setActiveForm}) => {
-    const [profilePic, setProfilePic] = useState(null)
+    const [profilePic, setProfilePic] = useState(null);
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
@@ -34,7 +34,7 @@ const SignUpForm = ({setActiveForm}) => {
         }
         if(!validateEmail(email)){
             setError("Please enter a valid email address.")
-            return
+            return;
         }
         if(!username){
             setError("Please enter the username")
