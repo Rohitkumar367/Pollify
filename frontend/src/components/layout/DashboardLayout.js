@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Navbar from './Navbar'
-import SideMenu from './SideMenu'
 import UserDetailsCard from '../card/UserDetailsCard'
 import { UserContext } from '../../context/UserContext'
 
