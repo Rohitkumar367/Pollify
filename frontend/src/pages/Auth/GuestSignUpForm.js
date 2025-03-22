@@ -25,7 +25,7 @@ const GuestSignUpForm = ({setActiveForm}) => {
         if(!fullName){
             setError("Please enter the fullname")
             return;
-        }    
+        }
         if(!email){
             setError("Please enter the email")
             return;

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import UserDetailsCard from '../card/UserDetailsCard'
 import { UserContext } from '../../context/UserContext'
+import SideMenu from './Sidemenu'
 
 const DashboardLayout = ({children, activeMenu}) => {
 
