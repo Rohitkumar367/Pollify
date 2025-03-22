@@ -13,7 +13,8 @@ const DashboardLayout = ({children, activeMenu}) => {
 
             <Navbar activeMenu={activeMenu}/>
 
-            {user && <div className="flex">
+            {user && 
+            <div className="flex">
                 <div className='max-[1080px]:hidden'>
                     <SideMenu activeMenu={activeMenu}/>
                 </div>
@@ -32,7 +33,8 @@ const DashboardLayout = ({children, activeMenu}) => {
                         totalPollsBookmarked={user && user.totalPollsBookmarked}
                     />
                 </div>
-            </div>}
+            </div>
+            }
 
         </div>
     )

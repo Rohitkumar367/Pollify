@@ -3,6 +3,7 @@ import DashboardLayout from '../../components/layout/DashboardLayout'
 import useUserAuth from '../../hooks/useUserAuth';
 import { UserContext } from '../../context/UserContext';
 import { POLL_TYPE } from '../../utils/Data';
+import OptionInput from '../../components/input/OptionInput';
 
 const CreatePoll = () => {
 
@@ -11,12 +12,11 @@ const CreatePoll = () => {
     const {user} = useContext(UserContext);
 
     const[pollData, setPollData]=useState({
-        question: "",
-        type: "",
-        options: [],
-        imageOptions: [],
-        
-        error: "",
+        question: "",       //string
+        type: "",           //string
+        options: [],        //array
+        imageOptions: [],   //array
+        error: "",          //string
     })
 
     const handleValueChange=(key, value)=>{
@@ -29,6 +29,7 @@ const CreatePoll = () => {
     return (
         <DashboardLayout activeMenu="Create Poll">
             <div className='bg-gray-100/80 my-5 p-5 rounded-lg mx-auto'>
+
                 <h2 className="text-lg text-black font-medium">Create Poll</h2>
 
                 <div className='mt-3'>
@@ -51,8 +52,7 @@ const CreatePoll = () => {
                             return (
                                 <div 
                                     key={index}
-                                    className={`option-chip ${
-                                        pollData.type==item.value ? "text-white bg-primaryLight2 border-primaryLight2" : "border-sky-100"} cursor-pointer px-2 rounded-md`
+                                    className={`option-chip ${pollData.type==item.value ? "text-white bg-primaryLight2 border-primaryLight2" : "border-sky-100"}`
                                     }
                                     onClick={()=>{
                                         handleValueChange("type", item.value)
@@ -64,9 +64,26 @@ const CreatePoll = () => {
                         })}
                     </div>
                 </div>
+
+                {pollData.type==="single-choice" && (
+                    <div className='mt-5'>
+                        <label className='text-xs font-medium text-slate-600'>OPTIONS</label>
+
+                        <div className='mt-3'>
+                            <OptionInput
+                                optionList={pollData.options}
+                                setOptionList={(value)=>{
+                                    handleValueChange("options", value)
+                                }}
+                            />
+                        </div>
+                    </div>
+                )}
+
             </div>
         </DashboardLayout>
     )
 }
 
 export default CreatePoll
+

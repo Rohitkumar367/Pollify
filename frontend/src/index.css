@@ -29,6 +29,10 @@
     .btn-primary{
         @apply w-full text-sm font-medium text-white bg-green-600 p-[5px] md:p-[10px] rounded-md my-1 hover:bg-transparent hover:border-2 hover:rounded-none border-green-600 hover:text-green-600 transition-all duration-100 ease-in-out hover:[transform:scale(1.02)]
     }
+
+    .option-chip{
+        @apply text-sm font-medium text-red-700 bg-red-100 px-4 py-1 rounded-lg border border-red-50 cursor-pointer hover:border-primaryLight2
+    }
 }
 
 input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear, input[type="password"]::-webkit-credentials-auto-fill-button {
