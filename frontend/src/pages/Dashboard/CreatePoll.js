@@ -52,7 +52,7 @@ const CreatePoll = () => {
                             return (
                                 <div 
                                     key={index}
-                                    className={`option-chip ${pollData.type==item.value ? "text-white bg-primaryLight2 border-primaryLight2" : "border-sky-100"}`
+                                    className={`option-chip ${pollData.type===item.value ? "text-white bg-primaryLight2 border-primaryLight2" : "border-sky-100"}`
                                     }
                                     onClick={()=>{
                                         handleValueChange("type", item.value)
