@@ -26,6 +26,7 @@ const CreatePoll = () => {
         }))
     }
 
+
     return (
         <DashboardLayout activeMenu="Create Poll">
             <div className='bg-gray-100/80 my-5 p-5 rounded-lg mx-auto'>
@@ -68,6 +69,21 @@ const CreatePoll = () => {
                 {pollData.type==="single-choice" && (
                     <div className='mt-5'>
                         <label className='text-xs font-medium text-slate-600'>OPTIONS</label>
+
+                        <div className='mt-3'>
+                            <OptionInput
+                                optionList={pollData.options}
+                                setOptionList={(value)=>{
+                                    handleValueChange("options", value)
+                                }}
+                            />
+                        </div>
+                    </div>
+                )}
+
+                {pollData.type==="image-based" && (
+                    <div className='mt-5'>
+                        <label className='text-xs font-medium text-slate-600'>IMAGE OPTIONS</label>
 
                         <div className='mt-3'>
                             <OptionInput

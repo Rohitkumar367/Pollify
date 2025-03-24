@@ -7,19 +7,23 @@ const OptionInput = ({optionList, setOptionList}) => {
 
     // function to handle adding an option
     const handleAddOption=()=>{
-
-    }
+        if(option.trim() && optionList.length < 4){
+            setOptionList([...optionList, option.trim()]);
+            setOption("");
+        }
+    };
 
     // function to handle deleting an option
     const handleDeleteOption=(index)=>{
-
+        const updatedArrr = optionList.filter((item, idx)=>idx!==index);
+        setOptionList(updatedArrr);
     }
 
     return (
         <div>
             {optionList.map((item, index)=>{
-                <div key={item} className='flex justify-between bg-gray-200/80 px-4 py-2 rounded-md mb-3'>
-                    <p className='text-xs font-medium text-black'>item</p>
+                return <div key={index} className='flex justify-between bg-gray-200/80 px-4 py-2 rounded-md mb-3'>
+                    <p className='text-xs font-medium text-black'>{item}</p>
 
                     <button
                         onClick={()=>{
@@ -38,7 +42,7 @@ const OptionInput = ({optionList, setOptionList}) => {
                         placeholder='Enter Option'
                         value={option}
                         onChange={({target})=>setOption(target.value)}
-                        className=''
+                        className='w-full text-[13px] text-black outline-none bg-gray-200/80 px-3 py-[6px] rounded-md'
                     />
 
                     <button
