@@ -7,7 +7,6 @@ const Navbar = ({activeMenu}) => {
 
     return (
         <div className='flex gap-5 border-b border-white-100 bg-slate-50/50 backdrop-blur-[2px] p-4 sticky top-0 z-30'>
-
             <button
                 className='block lg:hidden text-black'
                 onClick={()=>{setOpenSideMenu(!openSideMenu)}}
@@ -15,7 +14,7 @@ const Navbar = ({activeMenu}) => {
                 {openSideMenu ? <HiOutlineX className='text-2xl'/> : <HiOutlineMenu className='text-2xl'/>}
             </button>
 
-            <h2 className='text-lg font-medium text-primaryLight1'>Pollify</h2>
+            <h2 className='text-lg font-medium text-red-900'>Pollify</h2>
 
             {openSideMenu && (
                 <div className='fixed top-[61px] -ml-4 bg-white'>

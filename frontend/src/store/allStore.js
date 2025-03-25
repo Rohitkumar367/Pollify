@@ -36,9 +36,9 @@ export const useAuthStore = create((set)=>({
         }
     },
 
-    uploadImage: async(imageFile)=>{
+    uploadImage: async(profilePic)=>{
         const formData = new FormData();
-        formData.append('image', imageFile);
+        formData.append('image', profilePic);
         try{
             const response = await axiosInstance.post(API_PATHS.IMAGE.UPLOAD_IMAGE, formData, {
                 headers:{
