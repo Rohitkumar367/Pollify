@@ -1,10 +1,11 @@
 
 import express from 'express'
-import authRoutes from './routes/authRoutes.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import authRoutes from './routes/authRoutes.js'
+import pollRoutes from './routes/pollRoutes.js'
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -36,6 +37,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
 
 app.use("/api/auth", authRoutes);
+app.use("/api/poll", pollRoutes);
 
 app.get('/', (req, res)=>{
     res.send("Hello mrddroid")
