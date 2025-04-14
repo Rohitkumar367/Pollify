@@ -34,7 +34,7 @@ const CreatePoll = () => {
         const {question, type, options, imageOptions, error} = pollData;
 
         if(!question || !type){
-            console.log("CREATE: ", {question, type, options, error});
+            // console.log("CREATE: ", {question, type, options, error});
             handleValueChange("error", "Question & Type are required");
             return;
         }

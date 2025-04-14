@@ -15,7 +15,7 @@ const OptionInput = ({optionList, setOptionList}) => {
 
     // function to handle deleting an option
     const handleDeleteOption=(index)=>{
-        const updatedArrr = optionList.filter((item, idx)=>idx!==index);
+        const updatedArrr = optionList.filter((_i, idx)=>idx!==index);
         setOptionList(updatedArrr);
     }
 

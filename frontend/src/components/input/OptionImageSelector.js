@@ -11,7 +11,6 @@ const OptionImageSelector = ({imageList, setImageList}) => {
         if(file && imageList.length < 4)
         {
             const reader = new FileReader();
-
             reader.onload=()=>{
                 // add object with base64 and file to the array
                 setImageList([
@@ -19,8 +18,8 @@ const OptionImageSelector = ({imageList, setImageList}) => {
                     {base64: reader.result, file}
                 ])
             };
-
             reader.readAsDataURL(file);
+
             event.target.value=null;// resets the input, allowinng the same file to be selected again
         }
     }
@@ -73,3 +72,5 @@ const OptionImageSelector = ({imageList, setImageList}) => {
 }
 
 export default OptionImageSelector
+
+

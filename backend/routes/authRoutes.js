@@ -7,8 +7,8 @@ import upload from '../middleware/uploadMiddleware.js';
 
 const router = express.Router();
 
-router.get('/getUser', protect, getUserInfo); // in use
 router.get("/check-auth", verifyToken, checkAuth); // not in use
+router.get('/getUser', protect, getUserInfo); // in use
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);

@@ -13,7 +13,7 @@ export const useAuthStore = create((set)=>({
             const {user, token} = response.data;
 
             localStorage.setItem("token", token);
-            console.log({token, user});
+            // console.log({token, user});
             
             return user;
         } catch (err) {
@@ -28,7 +28,7 @@ export const useAuthStore = create((set)=>({
             const {user, token} = response.data;
             
             localStorage.setItem("token", token);
-            console.log({token, user});
+            // console.log({token, user});
 
             return user;
         } catch (err) {
@@ -46,7 +46,7 @@ export const useAuthStore = create((set)=>({
                 },
             });
 
-            console.log({response});
+            // console.log({response});
 
             return response.data;
         } catch(err){

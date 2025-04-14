@@ -122,7 +122,7 @@ export const getUserInfo = async (req, res) => {
 }
 
 
-
+// not in use
 export const checkAuth = async (req, res) => {
     try {
         const user = await UserModel.findById(req.userId).select("-password");
