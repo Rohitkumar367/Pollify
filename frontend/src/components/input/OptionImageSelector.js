@@ -37,7 +37,6 @@ const OptionImageSelector = ({imageList, setImageList}) => {
                 {imageList.map((item, index)=>(
                     <div key={index} className='bg-gray-600/10 rounded-md relative'>
                         <img src={item.base64} alt={`Selected_${index}`} className='w-full h-36 object-contain rounded-md'/>
-
                         <button
                             onClick={()=>{
                                 handleDeleteImage(index)

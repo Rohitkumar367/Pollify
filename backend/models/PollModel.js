@@ -17,7 +17,7 @@ const PollSchema = new mongoose.Schema({
             createdAt: {type: Date, default: Date.now} // and when it was created
         }
     ],
-    creator: {type: mongoose.Schema.Types.ObjectId, ref: "User"}, // which creator created the poll
+    creator: {type: mongoose.Schema.Types.ObjectId, ref: "User"}, // which user created the poll
     voters: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}], // for tracking who has voted on the poll and to prevent dublicate voting
     createdAt: {type: Date, default: Date.now}, // when was the poll created
     closed: {type: Boolean, default: false}, // to mark polls as closed
